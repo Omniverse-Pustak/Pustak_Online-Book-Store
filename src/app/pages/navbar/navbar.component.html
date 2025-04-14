@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="brand">Pustak</div>
+
+  <div class="search-container">
+    <input type="text" placeholder="Search books, authors, genres..." />
+    <button><i class="fas fa-search"></i></button>
+  </div>
+
+  <div class="actions">
+    <div class="cart" (click)="emitCartClicked()">
+      <i class="fas fa-shopping-cart"></i>
+      <span>Cart</span>
+    </div>
+
+    <div class="signin">
+      <i class="fas fa-user-circle"></i>
+      <span>Sign In</span>
+
+      <!-- Dropdown Menu -->
+      <div class="dropdown">
+        <p>New to Pustak? <a class="signup-link" (click)="navigateToSignup()">Sign up</a></p>
+        <a class="login-link" (click)="navigateToLogin()">Login</a>
+      </div>
+    </div>
+  </div>
+</nav>

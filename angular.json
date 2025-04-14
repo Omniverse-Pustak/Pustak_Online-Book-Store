@@ -27,9 +27,18 @@
               }
             ],
             "styles": [
-              "src/styles.css"
-            ],
-            "scripts": [],
+  "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+  "src/styles.css",
+  "node_modules/bootstrap/dist/css/bootstrap.min.css"
+]
+,
+"scripts": [
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+],"scripts": [
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+
+,
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -97,5 +106,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8c2b92a1-bd2a-48d2-a5b0-8fc9436148a9"
   }
 }
