@@ -1,0 +1,145 @@
+.orders-container {
+    margin: 20px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+.order-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Adjust individual columns inside order-item */
+.order-item .col-md-1,
+.order-item .col-md-3,
+.order-item .col-md-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Increase the width of the book list (the yellow-marked area) */
+.order-item .col-md-3 {
+    flex: 0 0 70%; /* Changed from 25% to 45% */
+    max-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Style inside the col-md-3 (Book info) */
+.order-item .col-md-3 h5 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+}
+
+.order-item .col-md-3 small {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.order-item .col-md-1 h5,
+.order-item .col-md-2 h5 {
+    font-size: 1.3rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Image settings */
+.order-item img {
+    max-width: 100%;
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.order-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Order details section */
+.order-item .order-details {
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.order-item .order-details .row {
+    margin-bottom: 15px;
+}
+
+/* Amount and Total */
+.order-item .col-md-4 h6,
+.order-item .col-md-2 h6 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #28a745;
+}
+
+/* Order Total container */
+.total-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #495057;
+}
+
+.total-container div {
+    padding: 10px;
+}
+
+.total-container .btn {
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.total-container .btn:hover {
+    background-color: #0056b3;
+}
+
+.total-container .btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Responsive Settings */
+@media (max-width: 768px) {
+    .order-item {
+        flex-direction: column;
+    }
+
+    .order-item img {
+        max-width: 100%;
+        height: 200px;
+    }
+
+    .order-item .col-md-2,
+    .order-item .col-md-3 {
+        justify-content: flex-start;
+        text-align: left;
+    }
+}

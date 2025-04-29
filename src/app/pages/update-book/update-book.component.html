@@ -1,0 +1,36 @@
+<div class="page-container">
+  <div class="form-box">
+    <h2>Update Book</h2>
+
+    <form [formGroup]="bookForm" (ngSubmit)="handleSubmit()">
+
+      <label>Book ID:</label>
+      <input formControlName="bookId" (blur)="onBookIdChange()" placeholder="Enter book ID" />
+
+      <label>Title:</label>
+      <input formControlName="title" placeholder="Enter book title" />
+
+      <label>Author Name:</label>
+      <input formControlName="author" placeholder="Enter author name" />
+
+      <label>Category:</label>
+      <input formControlName="category" placeholder="Enter new category" />
+
+      <label>Price:</label>
+      <input formControlName="price" type="number" placeholder="Enter book price" />
+
+      <!-- New Description field -->
+      <label>Description:</label>
+      <textarea formControlName="description" placeholder="Enter book description"></textarea>
+      <label>Is Popular:</label>
+      <input type="checkbox" formControlName="isPopular" />
+      
+      <button type="submit">Submit</button>
+
+    </form>
+
+    <div class="back-button">
+      <button (click)="goBackHome()">← Back to Home</button>
+    </div>
+  </div>
+</div>

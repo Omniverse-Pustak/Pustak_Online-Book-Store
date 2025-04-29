@@ -1,6 +1,15 @@
+<<<<<<< Updated upstream
 @Pustak_HostAddress = http://localhost:5187
 
 GET {{Pustak_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+=======
+@Pustak_HostAddress = http://localhost:5187
+
+GET {{Pustak_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+>>>>>>> Stashed changes

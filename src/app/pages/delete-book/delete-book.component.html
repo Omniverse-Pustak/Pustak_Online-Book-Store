@@ -1,0 +1,18 @@
+<div class="page-container">
+  <div class="form-box">
+    <h2>Delete Book</h2>
+
+    <form [formGroup]="deleteBookForm" (ngSubmit)="handleSubmit()">
+      <div class="form-group">
+        <label for="bookId">Book ID:</label>
+        <input type="number" formControlName="bookId" id="bookId" placeholder="Enter book ID to delete" />
+      </div>
+
+      <button type="submit" [disabled]="deleteBookForm.invalid" class="submit-btn">Delete</button>
+    </form>
+
+    <div class="back-button">
+      <button (click)="goBackHome()">← Back to Home</button>
+    </div>
+  </div>
+</div>

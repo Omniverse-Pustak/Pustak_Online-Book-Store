@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "price": 299,
+    "category": "Fiction",
+    "image": "The Alchemist.jpeg",
+    "description": "A journey of self-discovery and following your dreams, this novel follows Santiago, a young shepherd, as he travels from Spain to Egypt in search of treasure, learning life lessons along the way."
+  },
+  {
+    "id": 2,
+    "title": "The Power of Now",
+    "author": "Eckhart Tolle",
+    "price": 350,
+    "category": "Self help",
+    "image": "The Power of Now.jpeg",
+    "description": "A spiritual guide to help you discover your true self by living in the present moment, breaking free from the tyranny of your thoughts and ego."
+  },
+  {
+    "id": 3,
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "price": 499,
+    "category": "Non-fiction",
+    "image": "sapiens.jpeg",
+    "description": "A sweeping history of humankind, exploring how Homo sapiens came to dominate the world and how our cultures, beliefs, and technologies have evolved over time."
+  }
+]
