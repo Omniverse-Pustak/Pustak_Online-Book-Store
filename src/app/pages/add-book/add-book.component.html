@@ -2,58 +2,58 @@
   <div class="form-box">
     <h2>Add Book</h2>
 
-    <form [formGroup]="addBookForm" (ngSubmit)="handleSubmit()">
-      <div class="form-group">
-        <label for="bookName">Book Name:</label>
-        <input type="text" formControlName="bookName" id="bookName" placeholder="Enter book name" />
+    <form [formGroup]="addBooksForm" (ngSubmit)="handleSubmit()">
+      <div formArrayName="books">
+        <div *ngFor="let book of books.controls; let i = index" [formGroupName]="i" class="book-entry">
+          
+          <h3>Book {{ i + 1 }}</h3>
+    
+          <div class="form-group">
+            <label>Book Name:</label>
+            <input type="text" formControlName="bookName" placeholder="Enter book name" />
+          </div>
+    
+          <div class="form-group">
+            <label>Author Name:</label>
+            <input type="text" formControlName="authorName" placeholder="Enter author name" />
+          </div>
+    
+          <div class="form-group">
+            <label>Category:</label>
+            <select formControlName="category">
+              <option value="" disabled>Select Category</option>
+              <option *ngFor="let cat of categories" [value]="cat.name">{{ cat.name }}</option>
+            </select>
+          </div>
+    
+          <div class="form-group">
+            <label>Price:</label>
+            <input type="number" formControlName="price" placeholder="Enter price" />
+          </div>
+    
+          <div class="form-group">
+            <label>Cover File Name:</label>
+            <input type="text" formControlName="coverFileName" placeholder="Enter cover image file name" />
+          </div>
+    
+          <div class="form-group">
+            <label>Description:</label>
+            <textarea formControlName="description" placeholder="Enter book description"></textarea>
+          </div>
+    
+          <div class="form-group is-popular-group">
+            <input type="checkbox" formControlName="isPopular" />
+            <label>Is Popular:</label>
+          </div>
+    
+          <hr />
+        </div>
       </div>
-
-      <div class="form-group">
-        <label for="authorName">Author Name:</label>
-        <input type="text" formControlName="authorName" id="authorName" placeholder="Enter author name" />
-      </div>
-
-      <div class="form-group">
-        <label for="category">Category:</label>
-        <select formControlName="category" id="category">
-          <option value="" disabled selected>Select Category</option>
-          <option value="Fiction">Fiction</option>
-          <option value="Non-Fiction">Non-Fiction</option>
-          <option value="Competitive Exams">Competitive Exams</option>
-          <option value="Academic Texts">Academic Texts</option>
-          <option value="Children & Young Adults">Children & Young Adults</option>
-          <option value="School">School</option>
-          <option value="Self Help">Self Help</option>
-          <option value="Philosophy">Philosophy</option>
-          <option value="Family & Relationships">Family & Relationships</option>
-          <option value="Religion & Spirituality">Religion & Spirituality</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="price">Price:</label>
-        <input type="number" formControlName="price" id="price" placeholder="Enter price" />
-      </div>
-
-      <div class="form-group">
-        <label for="coverFileName">Cover File Name:</label>
-        <input type="text" formControlName="coverFileName" id="coverFileName" placeholder="Enter cover image file name (e.g., book1.jpg)" />
-      </div>
-
-      <!-- New Description field -->
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea formControlName="description" id="description" placeholder="Enter book description"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="isPopular">Is Popular:</label>
-        <input type="checkbox" formControlName="isPopular" id="isPopular" />
-      </div>
-      
-      
-      <button type="submit" [disabled]="addBookForm.invalid" class="submit-btn">Submit</button>
+    
+      <button type="button" (click)="addBookForm()">+ Add Another Book</button>
+      <button type="submit" [disabled]="addBooksForm.invalid" class="submit-btn">Submit</button>
     </form>
-
+    
     <div class="back-button">
       <button (click)="goBackHome()">← Back to Home</button>
     </div>
