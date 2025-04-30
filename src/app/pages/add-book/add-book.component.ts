@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';  // ✅ Add this import
 
 @Component({
   selector: 'app-add-book',
   templateUrl: './add-book.component.html',
-  imports: [
-    ReactiveFormsModule,
-    HttpClientModule   // 👈 Add HttpClientModule here
-  ],
-  styleUrls: ['./add-book.component.css']
+  imports: [ReactiveFormsModule, CommonModule],
+  styleUrls: ['./add-book.component.css'],
 })
 export class AddBookComponent {
-  addBookForm: FormGroup;
+  addBooksForm: FormGroup;
   categories = [
     { name: 'Fiction' },
     { name: 'Non-Fiction' },
@@ -25,69 +23,74 @@ export class AddBookComponent {
     { name: 'Philosophy' },
     { name: 'Family & Relationships' },
     { name: 'Religion & Spirituality' }
-  ];
+  ]; // Same as before
 
-  constructor(
-    private router: Router,
-    private http: HttpClient,
-    private fb: FormBuilder
-  ) {
-    this.addBookForm = this.fb.group({
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+    this.addBooksForm = this.fb.group({
+      books: this.fb.array([this.createBookForm()])
+    });
+  }
+
+  get books(): FormArray {
+    return this.addBooksForm.get('books') as FormArray;
+  }
+
+  createBookForm(): FormGroup {
+    return this.fb.group({
       bookName: ['', Validators.required],
       authorName: ['', Validators.required],
       category: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
       coverFileName: ['', Validators.required],
       description: ['', Validators.required],
-      isPopular: [false]  // 👉 Add this line
+      isPopular: [false]
     });
-    
+  }
+
+  addBookForm() {
+    this.books.push(this.createBookForm());
   }
 
   handleSubmit() {
-    if (this.addBookForm.invalid) {
+    if (this.addBooksForm.invalid) {
       alert('Please fill in all fields!');
       return;
     }
-  
-    const bookData = {
-      title: this.addBookForm.value.bookName,
-      author: this.addBookForm.value.authorName,
-      category: this.addBookForm.value.category,
-      price: this.addBookForm.value.price,
-      coverFileName: this.addBookForm.value.coverFileName,
-      description: this.addBookForm.value.description,
-      isPopular: this.addBookForm.value.isPopular  // 👉 Add this line
-    };
-    
-  
-    // Get token from localStorage
+
+    const booksData = this.books.value.map((book: any) => ({
+      title: book.bookName,
+      author: book.authorName,
+      category: book.category,
+      price: book.price,
+      coverFileName: book.coverFileName,
+      description: book.description,
+      isPopular: book.isPopular
+    }));
+
     const token = localStorage.getItem('token');
-  
     if (!token) {
       alert('User is not authenticated. Please login.');
       return;
     }
-  
+
     const headers = {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     };
-  
-    this.http.post<any>('http://localhost:8000/api/Books', bookData, { headers }).subscribe({
+
+    this.http.post<any>('http://localhost:8000/api/Books/bulk', booksData, {headers}).subscribe({
       next: (response) => {
-        console.log('Book added successfully', response);
-        alert('Book added successfully!');
-        this.router.navigate(['']);  // Navigate back to the home page or wherever you want after submission
+        alert('Books added successfully!');
+        this.router.navigate(['']);
       },
       error: (err) => {
-        console.error('Failed to add book', err);
-        alert('Error adding book!');
+        console.error('Failed to add books', err);
+        alert('Error adding books!');
       }
     });
   }
-  
+
   goBackHome() {
-    this.router.navigate(['']);  // Navigate back to the home page
+    this.router.navigate(['']);
   }
 }
