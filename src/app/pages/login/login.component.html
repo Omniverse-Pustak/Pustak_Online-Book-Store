@@ -1,0 +1,26 @@
+<div class="login-page">
+  <app-alert-popup
+    [message]="alertMessage"
+    [visible]="showAlert"
+    (okClick)="showAlert = false">
+  </app-alert-popup>
+
+  <div class="login-box">
+    <div class="header">
+      <h2>Pustak – Your Smart Book Corner 📚</h2>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <input type="text" placeholder="Username or Email" formControlName="usernameOrEmail" />
+      <input type="password" placeholder="Password" formControlName="password" />
+    
+      
+    
+      <button type="submit" class="login-button">Login</button>
+    </form>
+
+    <div class="signup-link">
+      New to Pustak? <span (click)="navigateToSignup()">Sign up</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="customer-orders-container">
+    <h1>Customer Orders</h1>
+    
+    <!-- Loop through all orders and group by userId -->
+    <div *ngFor="let order of orderList">
+      <div class="customer-card">
+        <h3>Customer ID: {{ order.userId }}</h3>
+        
+        <!-- Loop through the order details for each order -->
+        <div *ngFor="let detail of order.details" class="order-item">
+          <div class="order-detail">
+            <img [src]="'/assets/images/' + detail.coverFileName" alt="{{ detail.title }}" class="book-cover">
+            <div class="order-info">
+              <p><strong>Title:</strong> {{ detail.title }}</p>
+              <p><strong>Author:</strong> {{ detail.author }}</p>
+              <p><strong>Quantity:</strong> {{ detail.quantity }}</p>
+              <p><strong>Price:</strong> ₹{{ detail.price }}</p>
+              <p><strong>Total:</strong> ₹{{ detail.totalPrice }}</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Display the total cart value for this user -->
+        <div class="cart-total">
+          <strong>Total Cart Value: ₹{{ order.cartTotal }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,116 @@
+<app-navbar (cartClicked)="onCartAlert()"></app-navbar>
+
+<div class="category-container">
+
+<app-alert-popup
+  [visible]="showAnyAlert"
+  [message]="currentAlertMessage"
+  [showConfirm]="confirmMode"
+  (okClick)="handlePopupClick()"
+  (cancelClick)="handleCancelClick()"
+></app-alert-popup>
+
+
+
+  <h2 class="category-title">Books</h2>
+
+  <div class="category-scroll" #scrollContainer>
+    <div
+      class="category-item"
+      *ngFor="let category of categories"
+      (click)="onCategoryClick(category)"
+    >
+      <div class="icon-circle">
+        <span class="material-icons">{{ category.icon }}</span>
+      </div>
+      <div class="category-name">{{ category.name }}</div>
+    </div>
+  </div>
+
+  <!-- Scroll right arrow -->
+  <div class="scroll-arrow" (click)="scrollRight(scrollContainer)">
+    &gt;
+  </div>
+
+  <!-- Scroll left arrow -->
+  <div class="scroll-arrow" (click)="scrollLeft(scrollContainer)" style="left: 0; right: auto;">
+    &lt;
+  </div>
+</div>
+
+<!-- Cart Alert (visible when triggered) -->
+<div *ngIf="showCartAlert" class="cart-alert-overlay">
+  <div class="cart-alert-box">
+    <p>{{ alertMessage }}</p>
+    <button (click)="onOkClick()">OK</button>
+  </div>
+</div>
+
+<div *ngIf="isAdmin" class="admin-buttons">
+  <div class="action-box">
+    <h3 class="box-title">Let’s Expand Our Collection!</h3>
+    <button class="action-button" (click)="handleAction('add')">Add Book</button>
+  </div>
+
+  
+</div>
+
+
+<!-- Popular Books Section -->
+<!-- Popular Books Section -->
+<!-- Popular Books Section -->
+<!-- Popular Books Section -->
+<!-- Popular Books Section -->
+<div class="popular-books-container">
+  <h2 class="category-title">Popular Books</h2>
+
+  <!-- Display books in a grid of 4 books per row -->
+  <div class="popular-books-wrapper">
+    <div class="popular-books-grid">
+      <div *ngFor="let book of paginatedBooks" class="book-card">
+        <img
+          [src]="'/' + book.coverFileName"
+          alt="{{ book.title }}"
+          class="book-img mx-auto d-block"
+          (click)="navigateToBookSummary(book.bookID)"
+        />
+        <h6 class="mt-2 text-center book-title">{{ book.title }}</h6>
+        <p class="text-center text-muted mb-2" style="font-size: 18px;">
+          {{ book.author }}
+        </p>
+        <div class="text-center price-block">
+          <span class="price">₹{{ book.price }}</span>
+        </div>
+
+        <!-- Admin Edit and Delete buttons -->
+        <div *ngIf="isAdmin" class="mt-3 d-flex justify-content-center gap-3">
+          <!-- Edit Button -->
+          <button class="btn btn-warning" (click)="editBook(book.bookID)">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+
+          <!-- Delete Button -->
+          <button class="btn btn-danger" (click)="deleteBook(book.bookID, book.title)">
+            <i class="fas fa-trash-alt"></i> Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-controls text-center">
+  <button (click)="goToStartPage()" [disabled]="currentPage === 1" class="pagination-button">|&lt;</button>
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1" class="pagination-button">&lt;</button>
+
+  <button *ngFor="let page of pageNumbers()" 
+          (click)="changePage(page)" 
+          [class.active]="page === currentPage" 
+          class="pagination-button">
+    {{ page }}
+  </button>
+
+  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages" class="pagination-button">&gt;</button>
+  <button (click)="goToEndPage()" [disabled]="currentPage === totalPages" class="pagination-button">&gt;|</button>
+</div>
+
+</div>

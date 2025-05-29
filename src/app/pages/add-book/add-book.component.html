@@ -1,0 +1,80 @@
+<div class="page-container">
+  <!-- Alert Popup -->
+  <app-alert-popup
+    [message]="alertMessage"
+    [visible]="showAlert"
+    (okClick)="onAlertOkClick()">
+  </app-alert-popup>
+
+  <div class="form-box">
+    <h2>Add Book</h2>
+
+    <form [formGroup]="addBooksForm" (ngSubmit)="handleSubmit()">
+      <div formArrayName="books">
+        <div *ngFor="let book of books.controls; let i = index" [formGroupName]="i" class="book-entry">
+          <h3>Book {{ i + 1 }}</h3>
+
+          <div class="form-group">
+            <label>Book Name: <span class="required">*</span></label>
+            <input type="text" formControlName="bookName" placeholder="Enter book name" />
+          </div>
+
+          <div class="form-group">
+            <label>Author Name: <span class="required">*</span></label>
+            <input type="text" formControlName="authorName" placeholder="Enter author name" />
+          </div>
+
+          <div class="form-group">
+            <label>Category: <span class="required">*</span></label>
+            <select formControlName="category">
+              <option value="" disabled>Select Category</option>
+              <option *ngFor="let cat of categories" [value]="cat.name">{{ cat.name }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Price: <span class="required">*</span></label>
+            <input 
+  type="number" 
+  formControlName="price" 
+  placeholder="Enter price" 
+  step="0.01" 
+  min="0.01"
+/>
+
+          </div>
+
+          <div class="form-group">
+            <label>Cover File Name: <span class="required">*</span></label>
+            <input type="text" formControlName="coverFileName" placeholder="Enter cover image file name" />
+          </div>
+
+          <div class="form-group">
+            <label>Description: <span class="required">*</span></label>
+            <textarea formControlName="description" placeholder="Enter book description"></textarea>
+          </div>
+
+          <div class="form-group is-popular-group">
+            <input type="checkbox" formControlName="isPopular" />
+            <label>Is Popular:</label>
+          </div>
+
+          <hr />
+        </div>
+      </div>
+
+      <button type="button" (click)="addBookForm()">+ Add Another Book</button>
+      <button type="submit"  class="submit-btn">Submit</button>
+
+      <!-- Error message shown if validation fails -->
+      
+    </form>
+    <div *ngIf="validationErrorMessage" class="error-message">
+        {{ validationErrorMessage }}
+      </div>
+
+    <div class="back-button">
+      <button (click)="goBackHome()">← Back to Home</button>
+    </div>
+  </div>
+</div>

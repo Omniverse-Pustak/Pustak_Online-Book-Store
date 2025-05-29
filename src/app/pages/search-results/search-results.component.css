@@ -1,0 +1,24 @@
+.search-results {
+    padding: 20px;
+  }
+  
+  .book-card {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .cover-image {
+    width: 120px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+  }
+  
+  .book-details h3 {
+    margin-top: 0;
+  }
+  

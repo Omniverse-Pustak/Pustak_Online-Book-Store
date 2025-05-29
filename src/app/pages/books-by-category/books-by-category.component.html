@@ -1,0 +1,95 @@
+<app-navbar (cartClicked)="onCartAlert()"></app-navbar>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">{{ category }} Books</h2>
+
+  <!-- Show a message if no books are found in the selected category -->
+  <div *ngIf="filteredBooks.length === 0" class="text-center">
+    <p>No books available for this category.</p>
+  </div>
+
+ <app-alert-popup
+  [visible]="popupVisible"
+  [message]="popupMessage"
+  [showConfirm]="popupConfirmMode"
+  (confirm)="onPopupConfirm()"
+  (okClick)="handlePopupClick()"
+  (cancelClick)="resetPopup()">
+</app-alert-popup>
+
+  <!-- Display books when available -->
+  <div *ngIf="filteredBooks.length > 0" class="row">
+    <div class="col-md-3 mb-4" *ngFor="let book of filteredBooks">
+      <div class="book-card shadow-sm p-2 rounded">
+        <!-- Book Image -->
+        <img 
+          [src]="'/' + book.coverFileName" 
+          alt="{{ book.title }}" 
+          class="book-img mx-auto d-block"
+          (click)="navigateToBookSummary(book.bookID)" 
+          (error)="onImageError($event)"
+        />
+         
+
+        
+        <!-- Title -->
+        <h6 class="mt-2 text-center book-title">
+          {{ book.title }}
+        </h6>
+
+        <!-- Author -->
+        <p class="text-center text-muted mb-2" style="font-size: 18px;">
+          {{ book.author }}
+        </p>
+
+        <!-- Price -->
+        <div class="text-center price-block">
+          <span class="price">₹{{ book.price }}</span>
+        </div>
+
+        <!-- Admin Actions -->
+<div *ngIf="isAdmin" class="d-flex justify-content-center gap-2 mt-2">
+  <button class="btn btn-sm btn-warning" (click)="editBook(book.bookID)">
+    <i class="fas fa-edit"></i> Edit
+  </button>
+  <button class="btn btn-sm btn-danger" (click)="deleteBook(book.bookID, book.title)">
+    <i class="fas fa-trash-alt"></i> Delete
+  </button>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination controls -->
+<div *ngIf="totalPages > 1" class="text-center mt-4">
+  <button class="btn btn-outline-primary mx-1" 
+          (click)="goToStartPage()" 
+          [disabled]="currentPage === 1">
+    |&lt;
+  </button>
+  <button class="btn btn-outline-primary mx-1" 
+          (click)="changePage(currentPage - 1)" 
+          [disabled]="currentPage === 1">
+    &lt;
+  </button>
+
+  <button *ngFor="let page of pageNumbers()" 
+          class="btn btn-outline-primary mx-1" 
+          [ngClass]="{'active': currentPage === page}"
+          (click)="changePage(page)">
+    {{ page }}
+  </button>
+
+  <button class="btn btn-outline-primary mx-1" 
+          (click)="changePage(currentPage + 1)" 
+          [disabled]="currentPage === totalPages">
+    &gt;
+  </button>
+  <button class="btn btn-outline-primary mx-1" 
+          (click)="goToEndPage()" 
+          [disabled]="currentPage === totalPages">
+    &gt;|
+  </button>
+</div>
+
+</div>

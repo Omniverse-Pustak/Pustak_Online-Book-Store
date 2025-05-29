@@ -1,0 +1,260 @@
+.category-container {
+    position: relative;
+    overflow: hidden; /* Hide overflow to show only a limited number of categories */
+  }
+  .category-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 24px 0 20px 0; /* Remove left margin */
+    color: #333;
+    text-align: center; /* Center the title */
+  }
+  
+  
+  .category-scroll {
+    display: flex;
+    overflow-x: auto;
+    padding: 8px 0;
+    scroll-behavior: smooth;
+  
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE 10+ */
+  }
+  
+  .category-scroll::-webkit-scrollbar {
+    display: none;                /* Chrome, Safari, Edge */
+  }
+  
+  
+  .category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 80px; /* Space between categories */
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    font-size: 44px;
+    padding: 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .icon-circle:hover {
+    transform: scale(1.05);
+  }
+  
+  .material-icons {
+    font-size: 48px;
+    
+  }
+  
+  .category-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  /* Scroll arrow styles */
+  .scroll-arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .scroll-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .admin-buttons {
+  display: flex;
+  justify-content: center; /* Center the action box horizontally */
+  margin-top: 30px;         /* Keep a little space from top */
+  width: 100%;              /* Ensure it takes up the full width */
+}
+
+.action-box {
+  border: 2px solid #000;   /* Black border around each box */
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  width: 30%;                /* Adjust width to make the box smaller */
+  background-color: #f9f9f9;/* Light background for each box */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adding shadow for depth */
+}
+
+
+.box-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.action-button {
+  background-color: #e50050; /* Magenta-Pink */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.action-button:hover {
+  background-color: #c40040; /* Darker magenta-pink on hover */
+  transform: scale(1.05);
+}
+
+.action-button:active {
+  background-color: #a10030; /* Even darker on click */
+  transform: scale(0.98);
+}
+
+  
+/* Full-screen overlay for the alert box */
+.cart-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);  /* Dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's above other content */
+}
+
+/* Box styling for the alert */
+.cart-alert-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px; 
+  height:300px;/* Limit the max width */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center text vertically */
+  align-items: center; /* Center text horizontally */
+}
+
+.cart-alert-box p {
+  font-size: 25px;
+  color: #333;
+}
+
+.cart-alert-box button {
+  background-color: #e50050; /* Customize button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.cart-alert-box button:hover {
+  background-color: #c40045; /* Slightly darker shade */
+}
+
+.popular-books-wrapper {
+  margin-bottom: 20px;
+  padding: 0 50px; /* Padding around the entire wrapper */
+}
+
+.popular-books-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 books per row */
+  gap: 50px; /* Adds a gap between the books */
+}
+
+.book-card {
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-top: 3px solid #e0e0e0; /* Increased top border */
+  border-bottom: 3px solid #e0e0e0; /* Increased bottom border */
+  background-color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 10px; /* Reduced the left and right padding to 10px */
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Added a shadow effect on hover */
+}
+
+.book-img {
+  height: 330px;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+.book-title {
+  font-size: 20px;
+  font-weight: 600;
+  height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price-block {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.price {
+  color: #d32f2f;
+}
+
+/* Pagination Styles */
+.pagination-controls {
+  margin-top: 20px;
+}
+
+.pagination-button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.pagination-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination-button:hover {
+  background-color: #e6e6e6;
+}

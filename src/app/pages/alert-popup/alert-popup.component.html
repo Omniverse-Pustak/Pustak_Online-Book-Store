@@ -1,0 +1,10 @@
+<div class="cart-alert-overlay" *ngIf="visible">
+  <div class="cart-alert-box">
+    <p>{{ message }}</p>
+    <div class="popup-buttons">
+      <button *ngIf="showConfirm" (click)="onCancelClick()">Cancel</button>
+      <button *ngIf="showConfirm" (click)="onConfirmClick()">OK</button>
+      <button *ngIf="!showConfirm" (click)="onOkClick()">OK</button>
+    </div>
+  </div>
+</div>
