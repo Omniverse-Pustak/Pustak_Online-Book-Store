@@ -13,7 +13,12 @@
     justify-content: center;
     align-items: center;
   }
-  
+  .error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
   .form-box {
     background-color: rgba(255, 255, 255, 0.95);
     padding: 30px;
@@ -70,4 +75,43 @@
   .back-button button:hover {
     background-color: #2a6cd3;
   }
+
+  .is-popular-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+  }
+  
+  .is-popular-group input[type="checkbox"] {
+    width: auto;
+    margin-top: 0;
+  }
+  
+  .is-popular-group label {
+    margin-top: 0;
+  }
+  
+  .required {
+  color: red;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #ffe6e6;
+  padding: 10px;
+  border-radius: 6px;
+  display: block !important; /* 🔥 Force visibility */
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
   

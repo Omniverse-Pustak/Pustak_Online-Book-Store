@@ -1,25 +1,57 @@
 <nav class="navbar">
-  <div class="brand">Pustak</div>
+  <app-alert-popup
+  [visible]="showSearchAlert"
+  [message]="searchAlertMessage"
+  [showConfirm]="false"
+  (okClick)="showSearchAlert = false">
+</app-alert-popup>
+
+  <div class="left-group">  <!-- new container -->
+    <div class="back-button" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i>
+      <span>Back</span>
+    </div>
+
+    <div class="brand">Pustak</div>
+  </div>
 
   <div class="search-container">
-    <input type="text" placeholder="Search books, authors, genres..." />
-    <button><i class="fas fa-search"></i></button>
+    <input type="text" placeholder="Search books, authors, genres..." [formControl]="searchControl" />
+    <button (click)="searchBook()"><i class="fas fa-search"></i></button>
   </div>
 
   <div class="actions">
     <div class="cart" (click)="emitCartClicked()">
-      <i class="fas fa-shopping-cart"></i>
-      <span>Cart</span>
-    </div>
+  <i class="fas fa-shopping-cart position-relative">
+    <span *ngIf="cartItemCount > 0" class="badge">{{ cartItemCount }}</span>
+  </i>
+  <span>Cart</span>
+</div>
 
-    <div class="signin">
+    <div class="signin" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
       <i class="fas fa-user-circle"></i>
-      <span>Sign In</span>
 
-      <!-- Dropdown Menu -->
-      <div class="dropdown">
-        <p>New to Pustak? <a class="signup-link" (click)="navigateToSignup()">Sign up</a></p>
-        <a class="login-link" (click)="navigateToLogin()">Login</a>
+      <span *ngIf="!isLoggedIn(); else loggedInTemplate">Sign In</span>
+
+      <ng-template #loggedInTemplate>
+        {{ getFirstName() }}
+      </ng-template>
+
+      <div class="dropdown" *ngIf="showDropdown">
+        <ng-container *ngIf="!isLoggedIn(); else loggedInOptions">
+          <p>New to Pustak? <a class="signup-link" (click)="navigateToSignup()">Sign up</a></p>
+          <a class="login-link" (click)="navigateToLogin()">Login</a>
+        </ng-container>
+
+        <ng-template #loggedInOptions>
+          <ng-container *ngIf="!isAdmin(); else adminOrders">
+            <a (click)="navigateToMyOrders()">My Orders</a>
+          </ng-container>
+          <ng-template #adminOrders>
+            <a (click)="navigateToCustomerOrders()">Customer Orders</a>
+          </ng-template>
+          <a (click)="logout()">Logout</a>
+        </ng-template>
       </div>
     </div>
   </div>

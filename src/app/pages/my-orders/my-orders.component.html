@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<div class="orders-container">
+
+  <!-- If there are order items, show them -->
+  <div *ngIf="orderItems.length > 0; else noOrders">
+    
+    <div *ngFor="let order of orderItems; let i = index" class="order-item row mb-3">
+      
+      <div class="col-md-1 text-center">
+        <h5>{{ i + 1 }}</h5> <!-- Serial Number -->
+      </div>
+      
+      <div class="col-md-3 d-flex flex-column">
+        <div *ngFor="let item of order.details" class="order-details">
+          <div class="row">
+            <div class="col-md-2 text-center">
+              <img [src]="'/' + item.coverFileName" alt="{{ item.title }}" class="img-fluid rounded">
+            </div>
+            <div class="col-md-4 d-flex flex-column justify-content-center">
+              <h6>{{ item.title }}</h6>
+              <small class="text-muted">by {{ item.author }}</small>
+            </div>
+            <div class="col-md-2 d-flex flex-column align-items-center justify-content-center">
+              <h6>₹{{ item.totalPrice }}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2 text-center">
+        <h5>Order Amount: ₹{{ order.cartTotal }}</h5>
+      </div>
+    </div>
+
+    <!-- Total amount for all orders -->
+    <div class="total-container mt-4 text-end pe-4">
+      <div><strong>Total Amount:</strong> ₹{{ getTotalAmount() }}</div>
+    </div>
+
+  </div>
+
+  <!-- Fallback if no orders -->
+  <ng-template #noOrders>
+    <div class="text-center mt-5">
+      <h4>🛒 You haven't purchased anything yet!</h4>
+      <p>Browse our collection and grab your first book.</p>
+      <button class="btn btn-primary mt-3" (click)="shopNow()">Shop Now</button>
+    </div>
+  </ng-template>
+
+</div>

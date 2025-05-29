@@ -1,21 +1,51 @@
 <div class="page-container">
-    <div class="form-box">
-      <h2>Update Book</h2>
-  
-      <label>Book Name:</label>
-      <input type="text" placeholder="Enter book name" />
-  
+  <app-alert-popup
+  [visible]="showAlert"
+  [message]="alertMessage"
+  [showConfirm]="false"
+  (okClick)="onAlertOkClick()">
+</app-alert-popup>
+
+  <div class="form-box">
+    <h2>Update Book</h2>
+
+    <form [formGroup]="bookForm" (ngSubmit)="handleSubmit()">
+
+      <label>Book ID:</label>
+      <input formControlName="bookId" placeholder="Enter book ID" readonly />
+
+
+      <label>Title:</label>
+      <input formControlName="title" placeholder="Enter book title" />
+
       <label>Author Name:</label>
-      <input type="text" placeholder="Enter author name" />
-  
+      <input formControlName="author" placeholder="Enter author name" />
+
       <label>Category:</label>
-      <input type="text" placeholder="Enter new category" />
-  
-      <button (click)="handleSubmit()">Submit</button>
-  
-      <div class="back-button">
-        <button (click)="goBackHome()">← Back to Home</button>
-      </div>
+      <input formControlName="category" placeholder="Enter new category" />
+
+      <label>Price:</label>
+      <input formControlName="price" type="number" placeholder="Enter book price" />
+
+      <label>Description:</label>
+      <textarea formControlName="description" placeholder="Enter book description"></textarea>
+
+      <div class="is-popular-group">
+  <label for="isPopular">Is Popular:</label>
+  <input id="isPopular" type="checkbox" formControlName="isPopular" />
+</div>
+
+
+      <!-- Cover File Name field -->
+      <label>Cover File Name:</label>
+      <input formControlName="coverFileName" placeholder="Enter cover file name" />
+
+      <button type="submit" [disabled]="!bookForm.dirty || bookForm.invalid">Submit</button>
+
+    </form>
+
+    <div class="back-button">
+      <button (click)="goBackHome()">← Back to Home</button>
     </div>
   </div>
-  
+</div>

@@ -1,0 +1,26 @@
+<div class="search-results">
+  <app-alert-popup
+  [visible]="showNoResultsAlert"
+  [message]="alertMessage"
+  [showConfirm]="false"
+  (okClick)="showNoResultsAlert = false">
+</app-alert-popup>
+
+    <h2>Search Results</h2>
+  
+    <div *ngIf="books.length === 0">
+      <p>No books found.</p>
+    </div>
+  
+    <div *ngFor="let book of books" class="book-card">
+      <img [src]="'/' + book.coverFileName" alt="{{ book.title }}" class="cover-image">
+      <div class="book-details">
+        <h3>{{ book.title }}</h3>
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Category:</strong> {{ book.category }}</p>
+        <p><strong>Price:</strong> ₹{{ book.price }}</p>
+        <button (click)="viewBookSummary(book.bookID)">View Summary</button>
+      </div>
+    </div>
+  </div>
+  

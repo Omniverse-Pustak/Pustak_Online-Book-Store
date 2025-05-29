@@ -18,8 +18,13 @@ html, body {
   align-items: center;
   background-color: #e50050;
   color: white;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 0.8rem;
   width: 100%;
+}
+.left-group {
+  display: flex;
+
+  gap: 8px; /* smaller gap between back-button and brand */
 }
 
 /* Brand */
@@ -27,6 +32,7 @@ html, body {
   font-size: 1.8rem;
   font-weight: bold;
   white-space: nowrap;
+  margin-left: 4px;
 }
 
 /* Search */
@@ -35,7 +41,7 @@ html, body {
   display: flex;
   justify-content: center;
   min-width: 250px;
-  max-width: 700px;
+  max-width: 900px;
   margin: 0.5rem 1rem;
 }
 
@@ -145,4 +151,39 @@ html, body {
 
 .dropdown .signup-link:hover {
   color: white;
+}
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 10px;
+ 
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #333;
+ 
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.back-button i {
+  font-size: 18px;
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
+  transform: translateX(-2px);
+  color: #007bff;
 }

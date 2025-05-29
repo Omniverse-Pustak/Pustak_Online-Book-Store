@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+
+<div class="cart-container">
+  <app-alert-popup
+  [visible]="popupVisible"
+  [message]="popupMessage"
+  [showConfirm]="popupConfirm"
+  (okClick)="onPopupOk()"
+  (cancelClick)="onPopupCancel()">
+</app-alert-popup>
+
+
+
+  <div *ngFor="let item of cartItems; let i = index" class="cart-item row mb-3">
+
+    <div class="col-md-1 text-center">
+      <h5>{{ i + 1 }}</h5> <!-- Serial Number -->
+    </div>
+
+    <div class="col-md-2 text-center">
+      <img [src]="'/' + item.coverFileName" alt="{{ item.title }}" class="img-fluid rounded">
+    </div>
+
+    <div class="col-md-3 d-flex flex-column justify-content-center">
+      <h5>{{ item.title }}</h5>
+      <small class="text-muted">by {{ item.author }}</small> <!-- Author below Title -->
+    </div>
+
+    <div class="col-md-2 d-flex flex-column align-items-center justify-content-center">
+      <h5>₹{{ item.price }}</h5>
+      <div class="mt-2">
+        <button (click)="decreaseQuantity(item)" class="btn btn-outline-primary btn-sm">-</button>
+        <span class="mx-2">{{ item.quantity }}</span>
+        <button (click)="increaseQuantity(item)" class="btn btn-outline-primary btn-sm">+</button>
+      </div>
+    </div>
+
+    <div class="col-md-2 d-flex flex-column align-items-center justify-content-center">
+      <h5>₹{{ item.totalPrice }}</h5>
+    </div>
+
+    <div class="col-md-2 d-flex flex-column align-items-end justify-content-center">
+      
+      <button (click)="removeItem(item)" class="btn btn-outline-secondary btn-sm">🗑️ Remove</button>
+    </div>
+
+  </div>
+
+  <!-- Total and Buy Now button -->
+  <div class="total-container">
+    <div>Total Amount: ₹{{ getTotalAmount() }}</div>
+    <button (click)="checkout()" class="buy-now-btn">Buy Now</button>
+  </div>
+</div>

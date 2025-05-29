@@ -6,70 +6,68 @@
   justify-content: center;
   align-items: center;
 }
-  
-  
-  .login-box {
-    background-color: rgba(255, 255, 255, 0.97);
-    padding: 4rem; /* doubled */
-    border-radius: 20px; /* increased roundness */
-    width: 600px; /* doubled */
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    font-size: 1.5rem; /* overall font size increased */
-  }
-  
-  .header h2 {
-    margin-bottom: 30px;
-    color: #333;
-    font-size: 2rem; /* title size increased */
-  }
-  
-  input[type="text"],
-  input[type="password"] {
-    width: 75%;
-    padding: 20px; /* doubled */
-    margin: 20px 0; /* doubled */
-    border-radius: 10px; /* doubled */
-    border: 1px solid #ccc;
-    font-size: 1.2rem; /* text input size increased */
-  }
-  
-  .admin-check {
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem; /* slightly increased */
-    margin-bottom: 20px;
-    margin-left: 59px;
-  }
-  
-  .admin-check input[type="checkbox"] {
-    transform: scale(1.5); /* bigger checkbox */
-    margin-right: 10px;
-  }
-  
-  .login-button {
-    background-color: #9202d0;
-    color: white;
-    padding: 15px;
-    width: 50%;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1.2rem;
-  }
-  
-  .signup-link {
-    margin-top: 25px;
-    font-size: 1.2rem;
-  }
-  .signup-link span {
-    cursor: pointer;  /* Changes the cursor to a pointer when hovered */
-    color: #007bff;    /* Optional: Adds a color to the text for better visibility */
-    text-decoration: underline; /* Optional: Underlines the text to indicate it's clickable */
-  }
-  
-  .signup-link span:hover {
-    color: #0056b3; /* Optional: Changes the color when the text is hovered */
-  }
-  
-  
+
+.login-box {
+  background-color: rgba(255, 255, 255, 0.97);
+  padding: 4rem;
+  border-radius: 20px;
+  width: 600px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.header h2 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2rem;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 75%;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+}
+
+.admin-check {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  margin-left: 59px;
+}
+
+.admin-check input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 10px;
+}
+
+.login-button {
+  background-color: #9202d0;
+  color: white;
+  padding: 15px;
+  width: 50%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.signup-link {
+  margin-top: 25px;
+  font-size: 1.2rem;
+}
+
+.signup-link span {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.signup-link span:hover {
+  color: #0056b3;
+}

@@ -83,53 +83,56 @@
   .scroll-arrow:hover {
     background-color: rgba(0, 0, 0, 0.4);
   }
+  
   .admin-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: 30px;
-  }
+  display: flex;
+  justify-content: center; /* Center the action box horizontally */
+  margin-top: 30px;         /* Keep a little space from top */
+  width: 100%;              /* Ensure it takes up the full width */
+}
+
+.action-box {
+  border: 2px solid #000;   /* Black border around each box */
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  width: 30%;                /* Adjust width to make the box smaller */
+  background-color: #f9f9f9;/* Light background for each box */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adding shadow for depth */
+}
+
+
+.box-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.action-button {
+  background-color: #e50050; /* Magenta-Pink */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.action-button:hover {
+  background-color: #c40040; /* Darker magenta-pink on hover */
+  transform: scale(1.05);
+}
+
+.action-button:active {
+  background-color: #a10030; /* Even darker on click */
+  transform: scale(0.98);
+}
+
   
-  .action-box {
-    border: 2px solid #000; /* Black border around each box */
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    text-align: center;
-    width: 30%; /* Adjust width to have them side by side */
-    background-color: #f9f9f9; /* Light background for each box */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adding shadow for depth */
-  }
-  
-  .box-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
-  .action-button {
-    background-color: #e50050; /* Magenta-Pink */
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    margin-top: 10px;
-  }
-  
-  .action-button:hover {
-    background-color: #c40040; /* Darker magenta-pink on hover */
-    transform: scale(1.05);
-  }
-  
-  .action-button:active {
-    background-color: #a10030; /* Even darker on click */
-    transform: scale(0.98);
-  }
 /* Full-screen overlay for the alert box */
 .cart-alert-overlay {
   position: fixed;
@@ -177,4 +180,81 @@
 
 .cart-alert-box button:hover {
   background-color: #c40045; /* Slightly darker shade */
+}
+
+.popular-books-wrapper {
+  margin-bottom: 20px;
+  padding: 0 50px; /* Padding around the entire wrapper */
+}
+
+.popular-books-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 books per row */
+  gap: 50px; /* Adds a gap between the books */
+}
+
+.book-card {
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-top: 3px solid #e0e0e0; /* Increased top border */
+  border-bottom: 3px solid #e0e0e0; /* Increased bottom border */
+  background-color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 10px; /* Reduced the left and right padding to 10px */
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Added a shadow effect on hover */
+}
+
+.book-img {
+  height: 330px;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+.book-title {
+  font-size: 20px;
+  font-weight: 600;
+  height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price-block {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.price {
+  color: #d32f2f;
+}
+
+/* Pagination Styles */
+.pagination-controls {
+  margin-top: 20px;
+}
+
+.pagination-button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.pagination-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination-button:hover {
+  background-color: #e6e6e6;
 }

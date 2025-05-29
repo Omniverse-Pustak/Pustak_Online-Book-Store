@@ -1,0 +1,23 @@
+<div class="page-container">
+    <div class="form-box">
+      <h2>Highlight a Popular Book!</h2>
+  
+      <form [formGroup]="popularForm" (ngSubmit)="submitPopularForm()">
+        <div class="form-group">
+          <label for="popularBookId">Book ID:</label>
+          <input id="popularBookId" type="text" formControlName="bookId" class="form-input" />
+        </div>
+  
+        <div class="form-group">
+          <label for="popularityStatus">Status:</label>
+          <select id="popularityStatus" formControlName="status" class="form-input">
+            <option value="popular">Popular</option>
+            <option value="notPopular">Not Popular</option>
+          </select>
+        </div>
+  
+        <button class="action-button" [disabled]="popularForm.invalid" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  
